@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>챗봇 웹 인터페이스 디자인 레퍼런스</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: '교보손글씨2019', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+
+        .reference-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        .reference-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .reference-title {
+            padding: 20px;
+            border-bottom: 1px solid #e8e8e8;
+            font-size: 16px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        /* ===== 디자인 1: 라벤더 & 민트 ===== */
+        .design-1 {
+            background: #f8f5fb;
+        }
+
+        .design-1 .header {
+            padding: 30px;
+            text-align: center;
+            background: rgba(240, 220, 255, 0.6);
+            border-bottom: 2px solid rgba(200, 160, 255, 0.3);
+        }
+
+        .design-1 .header h1 {
+            font-size: 32px;
+            color: #8b5fbf;
+            margin-bottom: 10px;
+        }
+
+        .design-1 .header p {
+            color: #9d8ab5;
+            font-size: 14px;
+        }
+
+        .design-1 .search-area {
+            padding: 25px;
+        }
+
+        .design-1 .search-box {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .design-1 input {
+            flex: 1;
+            padding: 12px 16px;
+            border: 2px solid #d8bff0;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.8);
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+
+        .design-1 input:focus {
+            outline: none;
+            border-color: #c9a4ff;
+            background: white;
+            box-shadow: 0 0 0 3px rgba(200, 160, 255, 0.1);
+        }
+
+        .design-1 .search-btn {
+            padding: 12px 24px;
+            background: #c9a4ff;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+
+        .design-1 .search-btn:hover {
+            background: #b88ef5;
+            transform: translateY(-2px);
+        }
+
+        .design-1 .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .design-1 .content-card {
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 8px;
+            border-left: 4px solid #c9a4ff;
+        }
+
+        .design-1 .content-card h3 {
+            color: #8b5fbf;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+
+        .design-1 .content-card p {
+            color: #9d8ab5;
+            font-size: 12px;
+            line-height: 1.5;
+        }
+
+        /* ===== 디자인 2: 피치 & 크림 ===== */
+        .design-2 {
+            background: #fffbf7;
+        }
+
+        .design-2 .header {
+            padding: 30px;
+            background: rgba(255, 200, 220, 0.5);
+            text-align: center;
+            border-bottom: 2px solid rgba(255, 180, 210, 0.4);
+        }
+
+        .design-2 .header h1 {
+            font-size: 32px;
+            color: #d97ba6;
+            margin-bottom: 10px;
+        }
+
+        .design-2 .header p {
+            color: #c99bb0;
+            font-size: 14px;
+        }
+
+        .design-2 .search-area {
+            padding: 25px;
+        }
+
+        .design-2 .search-box {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .design-2 input {
+            flex: 1;
+            padding: 12px 16px;
+            border: 2px solid #ffc8dc;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.8);
+            font-size: 14px;
+        }
+
+        .design-2 input:focus {
+            outline: none;
+            border-color: #ffb4d2;
+            background: white;
+            box-shadow: 0 0 0 3px rgba(255, 180, 210, 0.1);
+        }
+
+        .design-2 .search-btn {
+            padding: 12px 24px;
+            background: #ffb4d2;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .design-2 .search-btn:hover {
+            background: #ff9ac1;
+            transform: translateY(-2px);
+        }
+
+        .design-2 .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .design-2 .content-card {
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 8px;
+            border-top: 4px solid #ffb4d2;
+        }
+
+        .design-2 .content-card h3 {
+            color: #d97ba6;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+
+        .design-2 .content-card p {
+            color: #c99bb0;
+            font-size: 12px;
+            line-height: 1.5;
+        }
+
+        /* ===== 디자인 3: 스카이 & 민트 ===== */
+        .design-3 {
+            background: #f5fafb;
+        }
+
+        .design-3 .header {
+            padding: 30px;
+            background: rgba(180, 230, 255, 0.4);
+            text-align: center;
+            border-bottom: 2px solid rgba(150, 210, 255, 0.3);
+        }
+
+        .design-3 .header h1 {
+            font-size: 32px;
+            color: #0fa5d1;
+            margin-bottom: 10px;
+        }
+
+        .design-3 .header p {
+            color: #5eb4d1;
+            font-size: 14px;
+        }
+
+        .design-3 .search-area {
+            padding: 25px;
+        }
+
+        .design-3 .search-box {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .design-3 input {
+            flex: 1;
+            padding: 12px 16px;
+            border: 2px solid #b4e6ff;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.8);
+            font-size: 14px;
+        }
+
+        .design-3 input:focus {
+            outline: none;
+            border-color: #96d2ff;
+            background: white;
+            box-shadow: 0 0 0 3px rgba(150, 210, 255, 0.1);
+        }
+
+        .design-3 .search-btn {
+            padding: 12px 24px;
+            background: #7fd3ff;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .design-3 .search-btn:hover {
+            background: #5eb4d1;
+            transform: translateY(-2px);
+        }
+
+        .design-3 .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .design-3 .content-card {
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 8px;
+            border-right: 4px solid #7fd3ff;
+        }
+
+        .design-3 .content-card h3 {
+            color: #0fa5d1;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+
+        .design-3 .content-card p {
+            color: #5eb4d1;
+            font-size: 12px;
+            line-height: 1.5;
+        }
+
+        /* ===== 디자인 4: 버터 & 라벤더 ===== */
+        .design-4 {
+            background: #fffaf3;
+        }
+
+        .design-4 .header {
+            padding: 30px;
+            background: rgba(255, 250, 200, 0.5);
+            text-align: center;
+            border-bottom: 2px solid rgba(240, 220, 255, 0.5);
+        }
+
+        .design-4 .header h1 {
+            font-size: 32px;
+            color: #c4a747;
+            margin-bottom: 10px;
+        }
+
+        .design-4 .header p {
+            color: #a89a7d;
+            font-size: 14px;
+        }
+
+        .design-4 .search-area {
+            padding: 25px;
+        }
+
+        .design-4 .search-box {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .design-4 input {
+            flex: 1;
+            padding: 12px 16px;
+            border: 2px solid #f0dcff;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.8);
+            font-size: 14px;
+        }
+
+        .design-4 input:focus {
+            outline: none;
+            border-color: #e0c8ff;
+            background: white;
+            box-shadow: 0 0 0 3px rgba(224, 200, 255, 0.1);
+        }
+
+        .design-4 .search-btn {
+            padding: 12px 24px;
+            background: #d4b896;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .design-4 .search-btn:hover {
+            background: #c4a747;
+            transform: translateY(-2px);
+        }
+
+        .design-4 .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .design-4 .content-card {
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 8px;
+            border: 1px solid rgba(240, 220, 255, 0.5);
+            box-shadow: 0 2px 8px rgba(196, 167, 71, 0.08);
+        }
+
+        .design-4 .content-card h3 {
+            color: #c4a747;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+
+        .design-4 .content-card p {
+            color: #a89a7d;
+            font-size: 12px;
+            line-height: 1.5;
+        }
+
+        /* 레이아웃 공통 */
+        .design-container {
+            height: 600px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .design-container .search-area {
+            flex-shrink: 0;
+        }
+
+        .design-container .content-grid {
+            flex: 1;
+            overflow-y: auto;
+            padding-bottom: 20px;
+        }
+
+        /* 모달 스타일 (비교용) */
+        .modal-example {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            max-width: 500px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+            z-index: 1000;
+            display: none;
+        }
+
+        .modal-example.active {
+            display: block;
+        }
+
+        @media (max-width: 1200px) {
+            .reference-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+    <h2>🎨 챗봇 웹 인터페이스 디자인 레퍼런스</h2>
+
+    <div class="reference-container">
+        <!-- 디자인 1: 라벤더 & 민트 -->
+        <div class="reference-card">
+            <div class="reference-title">디자인 1: 라벤더 & 민트</div>
+            <div class="design-1 design-container">
+                <div class="header">
+                    <h1>DemoSite</h1>
+                    <p>고객 지원을 위한 스마트 검색</p>
+                </div>
+                <div class="search-area">
+                    <div class="search-box">
+                        <input type="text" placeholder="예) 서비스 이용 방법, 환불 정책, 문의 방법 등">
+                        <button class="search-btn">🔍</button>
+                    </div>
+                    <div class="content-grid">
+                        <div class="content-card">
+                            <h3>📚 서비스 이용 방법</h3>
+                            <p>서비스 이용은 회원가입 후 가능하며, 메인 화면에서 원하는 서비스를 선택하시면 됩니다.</p>
+                        </div>
+                        <div class="content-card">
+                            <h3>💰 환불 정책 안내</h3>
+                            <p>환불은 결제 후 7일 이내에 요청하실 수 있으며, 자세한 내용은 환불 정책을 참고하세요.</p>
+                        </div>
+                        <div class="content-card">
+                            <h3>❓ 자주하는 질문</h3>
+                            <p>많은 고객님들이 자주 묻는 내용들을 정리해두었습니다.</p>
+                        </div>
+                        <div class="content-card">
+                            <h3>📞 고객센터</h3>
+                            <p>1:1 채팅 또는 이메일로 문의하실 수 있습니다.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 디자인 2: 피치 & 크림 -->
+        <div class="reference-card">
+            <div class="reference-title">디자인 2: 피치 & 크림</div>
+            <div class="design-2 design-container">
+                <div class="header">
+                    <h1>DemoSite</h1>
+                    <p>고객 지원을 위한 스마트 검색</p>
+                </div>
+                <div class="search-area">
+                    <div class="search-box">
+                        <input type="text" placeholder="예) 서비스 이용 방법, 환불 정책, 문의 방법 등">
+                        <button class="search-btn">🔍</button>
+                    </div>
+                    <div class="content-grid">
+                        <div class="content-card">
+                            <h3>📚 서비스 이용 방법</h3>
+                            <p>서비스 이용은 회원가입 후 가능하며, 메인 화면에서 원하는 서비스를 선택하시면 됩니다.</p>
+                        </div>
+                        <div class="content-card">
+                            <h3>💰 환불 정책 안내</h3>
+                            <p>환불은 결제 후 7일 이내에 요청하실 수 있으며, 자세한 내용은 환불 정책을 참고하세요.</p>
+                        </div>
+                        <div class="content-card">
+                            <h3>❓ 자주하는 질문</h3>
+                            <p>많은 고객님들이 자주 묻는 내용들을 정리해두었습니다.</p>
+                        </div>
+                        <div class="content-card">
+                            <h3>📞 고객센터</h3>
+                            <p>1:1 채팅 또는 이메일로 문의하실 수 있습니다.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 디자인 3: 스카이 & 민트 -->
+        <div class="reference-card">
+            <div class="reference-title">디자인 3: 스카이 & 민트</div>
+            <div class="design-3 design-container">
+                <div class="header">
+                    <h1>DemoSite</h1>
+                    <p>고객 지원을 위한 스마트 검색</p>
+                </div>
+                <div class="search-area">
+                    <div class="search-box">
+                        <input type="text" placeholder="예) 서비스 이용 방법, 환불 정책, 문의 방법 등">
+                        <button class="search-btn">🔍</button>
+                    </div>
+                    <div class="content-grid">
+                        <div class="content-card">
+                            <h3>📚 서비스 이용 방법</h3>
+                            <p>서비스 이용은 회원가입 후 가능하며, 메인 화면에서 원하는 서비스를 선택하시면 됩니다.</p>
+                        </div>
+                        <div class="content-card">
+                            <h3>💰 환불 정책 안내</h3>
+                            <p>환불은 결제 후 7일 이내에 요청하실 수 있으며, 자세한 내용은 환불 정책을 참고하세요.</p>
+                        </div>
+                        <div class="content-card">
+                            <h3>❓ 자주하는 질문</h3>
+                            <p>많은 고객님들이 자주 묻는 내용들을 정리해두었습니다.</p>
+                        </div>
+                        <div class="content-card">
+                            <h3>📞 고객센터</h3>
+                            <p>1:1 채팅 또는 이메일로 문의하실 수 있습니다.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 디자인 4: 버터 & 라벤더 -->
+        <div class="reference-card">
+            <div class="reference-title">디자인 4: 버터 & 라벤더</div>
+            <div class="design-4 design-container">
+                <div class="header">
+                    <h1>DemoSite</h1>
+                    <p>고객 지원을 위한 스마트 검색</p>
+                </div>
+                <div class="search-area">
+                    <div class="search-box">
+                        <input type="text" placeholder="예) 서비스 이용 방법, 환불 정책, 문의 방법 등">
+                        <button class="search-btn">🔍</button>
+                    </div>
+                    <div class="content-grid">
+                        <div class="content-card">
+                            <h3>📚 서비스 이용 방법</h3>
+                            <p>서비스 이용은 회원가입 후 가능하며, 메인 화면에서 원하는 서비스를 선택하시면 됩니다.</p>
+                        </div>
+                        <div class="content-card">
+                            <h3>💰 환불 정책 안내</h3>
+                            <p>환불은 결제 후 7일 이내에 요청하실 수 있으며, 자세한 내용은 환불 정책을 참고하세요.</p>
+                        </div>
+                        <div class="content-card">
+                            <h3>❓ 자주하는 질문</h3>
+                            <p>많은 고객님들이 자주 묻는 내용들을 정리해두었습니다.</p>
+                        </div>
+                        <div class="content-card">
+                            <h3>📞 고객센터</h3>
+                            <p>1:1 채팅 또는 이메일로 문의하실 수 있습니다.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
